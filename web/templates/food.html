@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% set active = "food" %}
+{% block title %}云南行 - 饮食{% endblock %}
+{% block body %}
+<div class="p-4 space-y-4">
+<h1 class="text-lg font-bold">饮食候选</h1>
+
+<div class="bg-white rounded-lg p-3 shadow-sm prose prose-sm max-w-none">
+{{ intro | safe }}
+</div>
+
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<div class="flex justify-between items-center mb-2">
+<h2 class="font-semibold text-sm">候选总表</h2>
+<span class="text-xs text-gray-400">{{ rows|length }} 项</span>
+</div>
+<div class="space-y-3">
+{% for row in rows %}
+<div class="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
+<div class="flex justify-between gap-3">
+<div class="min-w-0">
+<div class="font-semibold text-sm truncate">{{ row.get('name','') }}</div>
+<div class="text-xs text-gray-500 mt-1">{{ row.get('city','') }} · {{ row.get('area','') }} · {{ row.get('category','') }}</div>
+</div>
+<div class="text-right shrink-0">
+<div class="text-sm font-semibold text-blue-500">¥{{ row.get('estimated_price_cny','') }}</div>
+<div class="text-[10px] text-gray-400">{{ row.get('visit_status','') }}</div>
+</div>
+</div>
+<div class="mt-2 text-xs text-gray-700">
+<span class="text-gray-500">推荐：</span>{{ row.get('must_try','') }}
+</div>
+{% if row.get('notes','') %}
+<div class="mt-1 text-xs text-gray-500 leading-relaxed">{{ row.get('notes','') }}</div>
+{% endif %}
+{% if row.get('url','') %}
+<a class="inline-block mt-2 text-xs text-blue-500" href="{{ row.get('url','') }}" target="_blank" rel="noopener">查看来源</a>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

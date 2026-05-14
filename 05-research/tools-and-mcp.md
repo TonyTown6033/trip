@@ -52,6 +52,19 @@
 - 每次候选详情页附带 MediaCrawler 关键词文件，用于后续小范围公开口碑检索。
 - MediaCrawler 复核后更新候选表的 `research_status`，再同步到对应阶段的 `stay.md`、`plan.md` 或 `backup.md`。
 
+## MediaCrawler 使用方式
+
+- 当前项目路径：`/Users/town/Documents/trip/05-research/tools/MediaCrawler`。
+- 优先通过 `$mediacrawler-research` skill 生成 dry-run 命令，再人工确认是否执行。
+- 小红书默认使用 CDP 连接已有 Chrome：Chrome 需已登录小红书，`localhost:9222` 需可连接，浏览器弹窗需人工允许。
+- 已验证当前 Chrome 登录态可被复用：`XHS_COOKIE_COUNT=16`，`XHS_LOGIN_STATE_VALID=True`。
+- 默认输出格式用 `jsonl`，路径为 `tools/MediaCrawler/data/xhs/jsonl/`；需要去重/更新时用 `sqlite`，路径为 `tools/MediaCrawler/database/sqlite_tables.db`。
+- 典型小范围命令：
+
+```bash
+rtk uv run main.py --platform xhs --lt qrcode --type search --keywords "昆明站酒店,昆明住宿避坑" --save_data_option jsonl --get_comment false --get_sub_comment false --max_comments_count_singlenotes 0 --max_concurrency_num 1
+```
+
 ## 禁止自动化
 
 - 自动登录

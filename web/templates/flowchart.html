@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>信息收集流程图</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; padding: 40px 20px; background: #f8f9fa; }
+.container { max-width: 900px; width: 100%; }
+h1 { text-align: center; color: #333; margin-bottom: 30px; }
+.mermaid { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>旅行信息收集流程</h1>
+<div class="mermaid">
+flowchart TD
+    A[开始规划] --> B[搜集未来60天天气信息]
+    B --> C{根据天气设计总路线}
+    C --> D[确定总路线]
+    D --> E[按路线拆分城市]
+
+    E --> F1[酒店/民宿]
+    E --> F2[美食]
+    E --> F3[景点]
+    E --> F4[用户自定义信息]
+
+    F1 --> G[多方面分析]
+    F2 --> G
+    F3 --> G
+    F4 --> G
+
+    G --> G1[小红书爬虫 - 口碑评价]
+    G --> G2[价格调查 - 比价]
+
+    G1 --> H[设计具体城市计划]
+    G2 --> H
+
+    H --> H1[居住计划]
+    H --> H2[游玩计划]
+    H --> H3[交通计划]
+
+    H1 --> I[串联各城市计划]
+    H2 --> I
+    H3 --> I
+
+    I --> J[完整行程方案]
+</div>
+</div>
+<script>mermaid.initialize({theme:'default',flowchart:{curve:'basis'}})</script>
+</body>
+</html>

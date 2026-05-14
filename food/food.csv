@@ -1,0 +1,8 @@
+candidate_id,query_date,city,stage,source,name,area,category,estimated_price_cny,must_try,url,research_status,visit_status,notes
+food-kunming-20260514-001,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,祥云美食城,得胜桥/祥云街,美食城,10-35,罐罐米线/涮菜/云南小吃,https://a.feizhu.com/1x18CU,pending,候选,昆明站坐地铁到得胜桥约2站；适合低预算正餐和小吃集中解决
+food-kunming-20260514-002,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,祥云街,得胜桥/祥云街,小吃街,10-40,云南菜/小吃,https://a.feizhu.com/4PNTuy,pending,候选,与祥云美食城相邻；选择多但需现场避开明显游客价
+food-kunming-20260514-003,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,南强步行街,昆明老街/得胜桥,小吃街,10-40,风味小吃,https://a.feizhu.com/03vyhI,pending,候选,离昆明站地铁距离近；适合顺路边逛边吃
+food-kunming-20260514-004,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,文化巷,翠湖/云南大学,学生街区,10-35,学生价简餐/滇味小吃,https://a.feizhu.com/3KwNbs,pending,候选,翠湖步行约10分钟；适合低价晚餐和长期日常吃饭
+food-kunming-20260514-005,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,文林街,翠湖/云南大学,餐饮街区,15-45,小吃/简餐/咖啡,https://a.feizhu.com/4DloTT,pending,候选,与文化巷相邻；价格可能比学生街略高
+food-kunming-20260514-006,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,昆明老街,光华街/文明街,老街小吃,10-40,小锅米线/鲜花饼,https://a.feizhu.com/1fWiPk,pending,候选,翠湖步行约15分钟；适合逛老街时顺路解决小吃
+food-kunming-20260514-007,2026-05-14,昆明,01-kunming,飞猪/FlyAI ai-search,文明街传统老字号商街,昆明老街/文明街,老字号商街,10-40,鲜花饼/米线/传统小吃,https://a.feizhu.com/4NdS4E,pending,候选,属于昆明老街片区；后续复核是否游客化和排队情况

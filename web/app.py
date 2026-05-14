@@ -118,3 +118,14 @@ async def gear(request: Request):
     return templates.TemplateResponse(request, "gear.html", {
         "rows": rows,
     })
+
+
+@app.get("/food", response_class=HTMLResponse)
+async def food(request: Request):
+    food_dir = PROJECT / "food"
+    intro_html = read_md(food_dir / "README.md")
+    rows = read_csv_rows(food_dir / "food.csv")
+    return templates.TemplateResponse(request, "food.html", {
+        "intro": intro_html,
+        "rows": rows,
+    })
