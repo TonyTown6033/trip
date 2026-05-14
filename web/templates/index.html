@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% set active = "home" %}
+{% block title %}云南行 - 总览{% endblock %}
+{% block head %}
+<script src="https://webapi.amap.com/loader.js"></script>
+<style>
+.stage-marker{width:20px;height:20px;border-radius:50%;background:#3b82f6;color:#fff;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+</style>
+{% endblock %}
+{% block body %}
+<div class="p-4 space-y-4">
+<h1 class="text-lg font-bold">云南背包行</h1>
+
+<!-- overview -->
+<div class="bg-white rounded-lg p-3 shadow-sm prose prose-sm max-w-none">
+{{ overview | safe }}
+</div>
+
+<!-- budget summary chart -->
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<h2 class="font-semibold mb-2">预算分配</h2>
+<div id="budget-pie" class="w-full h-48"></div>
+</div>
+
+<!-- mini map -->
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<h2 class="font-semibold mb-2">路线概览</h2>
+<div id="map" class="w-full h-48 rounded"></div>
+</div>
+
+<!-- stages list -->
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<h2 class="font-semibold mb-2">各站</h2>
+<div class="space-y-1">
+{% for slug, label in stages %}
+<a href="/stages/{{ slug }}" class="block px-3 py-2 rounded hover:bg-gray-100 flex justify-between">
+<span>{{ loop.index }}. {{ label }}</span>
+<span class="text-gray-400">→</span>
+</a>
+{% endfor %}
+</div>
+</div>
+</div>
+
+<script>
+// budget pie
+var budgetData = [
+{% for row in budget_rows %}
+{% if row.category and row.category != '总计' %}
+{name:'{{row.category}}', value:{{row.planned or 0}}},
+{% endif %}
+{% endfor %}
+];
+var pie = echarts.init(document.getElementById('budget-pie'));
+pie.setOption({
+  series:[{type:'pie',radius:['40%','70%'],data:budgetData,label:{fontSize:10}}],
+  color:['#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#6b7280']
+});
+
+// map
+window._AMapSecurityConfig = {securityJsCode:'{{ amap_security }}'};
+AMapLoader.load({key:'{{ amap_key }}',version:'2.0',plugins:['AMap.Driving']}).then(function(AMap){
+var map = new AMap.Map('map',{zoom:6,center:[100.5,26],features:['bg','road','building','point'],resizeEnable:true});
+var path = [{% for c in coords %}[{{c[0]}},{{c[1]}}],{% endfor %}];
+var labels = [{% for s in stages %}'{{s[1]}}',{% endfor %}];
+path.forEach(function(p,i){
+  if(i>=labels.length) return;
+  map.add(new AMap.Marker({position:p,content:'<div class="stage-marker">'+(i+1)+'</div>',offset:new AMap.Pixel(-10,-10)}));
+});
+var driving = new AMap.Driving({map:null,policy:AMap.DrivingPolicy.LEAST_DISTANCE});
+(function drawSeg(i){
+  if(i>=path.length-1){map.setFitView(null,false,[30,30,30,30]);return;}
+  driving.search(new AMap.LngLat(path[i][0],path[i][1]),new AMap.LngLat(path[i+1][0],path[i+1][1]),function(s,r){
+    if(s==='complete'&&r.routes&&r.routes.length){
+      var pts=r.routes[0].steps.reduce(function(a,st){return a.concat(st.path);},[]);
+      map.add(new AMap.Polyline({path:pts,strokeColor:'#3b82f6',strokeWeight:3,strokeOpacity:0.7,lineJoin:'round',lineCap:'round'}));
+    } else {
+      map.add(new AMap.Polyline({path:[path[i],path[i+1]],strokeColor:'#3b82f6',strokeWeight:2,strokeStyle:'dashed'}));
+    }
+    drawSeg(i+1);
+  });
+})(0);
+}).catch(function(e){document.getElementById('map').innerHTML='<p class="text-gray-400 text-center pt-16">地图加载失败</p>';});
+</script>
+{% endblock %}

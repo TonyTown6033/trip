@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% set active = "" %}
+{% block title %}{{ label }} - 云南行{% endblock %}
+{% block body %}
+<div class="p-4 space-y-3">
+<div class="flex items-center gap-2">
+<a href="/" class="text-blue-500">←</a>
+<h1 class="text-lg font-bold">{{ label }}</h1>
+</div>
+
+<!-- tabs -->
+<div class="flex overflow-x-auto gap-4 border-b text-xs whitespace-nowrap" id="tab-bar">
+{% for key in ['plan','transport','stay','food','backup'] %}
+<button onclick="showTab('{{key}}')" id="btn-{{key}}" class="pb-2 px-1 {% if loop.first %}tab-active{% endif %}">
+{{ {'plan':'计划','transport':'交通','stay':'住宿','food':'餐饮','backup':'备选'}[key] }}
+</button>
+{% endfor %}
+</div>
+
+<!-- tab content -->
+{% for key in ['plan','transport','stay','food','backup'] %}
+<div id="tab-{{key}}" class="bg-white rounded-lg p-3 shadow-sm prose prose-sm max-w-none {% if not loop.first %}hidden{% endif %}">
+{{ tabs[key] | safe }}
+</div>
+{% endfor %}
+
+{% if budget_rows %}
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<h2 class="font-semibold text-sm mb-2">预算</h2>
+<table class="w-full text-xs">
+<tr class="border-b"><th class="text-left py-1">项目</th><th class="text-right">预估</th><th class="text-right">实际</th></tr>
+{% for row in budget_rows %}
+<tr class="border-b border-gray-100"><td class="py-1">{{row.get('item','')}}</td><td class="text-right">{{row.get('estimated_cost','')}}</td><td class="text-right">{{row.get('actual_cost','')}}</td></tr>
+{% endfor %}
+</table>
+</div>
+{% endif %}
+</div>
+
+<script>
+function showTab(key){
+  document.querySelectorAll('[id^="tab-"]').forEach(function(el){
+    if(el.id!='tab-bar') el.classList.add('hidden');
+  });
+  document.getElementById('tab-'+key).classList.remove('hidden');
+  document.querySelectorAll('#tab-bar button').forEach(function(b){b.classList.remove('tab-active')});
+  document.getElementById('btn-'+key).classList.add('tab-active');
+}
+</script>
+{% endblock %}

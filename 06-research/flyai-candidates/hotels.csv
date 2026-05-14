@@ -1,0 +1,8 @@
+candidate_id,query_date,city,stage,source,name,area,check_in,check_out,price_cny,url,research_status,booking_status,notes
+hotel-kunming-20260522-001,2026-05-14,昆明,01-kunming,飞猪/FlyAI,阡陌之旅青年旅社,近昆明站；春城时代广场上海沙龙B座,2026-05-22,2026-05-25,21,https://a.feizhu.com/0OXbXF,pending,候选,2023装修；需确认24h前台和早到寄存
+hotel-kunming-20260522-002,2026-05-14,昆明,01-kunming,飞猪/FlyAI,澜舍女生精品青旅（昆明火车站店）,近昆明站；鑫都韵城7栋,2026-05-22,2026-05-25,25,https://a.feizhu.com/14iDSz,pending,候选,女生青旅；若适用需确认床位和前台时间
+hotel-kunming-20260522-003,2026-05-14,昆明,01-kunming,飞猪/FlyAI,昆明拾光里青年旅社,近昆明站；鑫都韵城9栋,2026-05-22,2026-05-25,26,https://a.feizhu.com/065kWQ,pending,候选,低价优先；需确认24h前台和早到寄存
+hotel-kunming-20260522-004,2026-05-14,昆明,01-kunming,飞猪/FlyAI,昆明小鹿不在家青年旅社,近昆明站；鑫都韵城10栋,2026-05-22,2026-05-25,30,https://a.feizhu.com/06poNK,pending,候选,低价备选；需确认24h前台和早到寄存
+hotel-kunming-20260522-005,2026-05-14,昆明,01-kunming,飞猪/FlyAI,云同青旅民宿(昆明火车站店),近昆明站；鑫都韵城17栋,2026-05-22,2026-05-25,42,https://a.feizhu.com/1Z50zA,pending,候选,2024装修；价格略高但更新
+hotel-kunming-20260522-006,2026-05-14,昆明,01-kunming,飞猪/FlyAI,昆明流年时光青年旅社,近昆明站；鑫都韵城10栋,2026-05-22,2026-05-25,45,https://a.feizhu.com/002ICI,pending,候选,价格中档；需确认寄存和入住时间
+hotel-kunming-20260522-007,2026-05-14,昆明,01-kunming,飞猪/FlyAI,翠花青旅民宿(环城南路地铁口店),近昆明站/环城南路地铁口,2026-05-22,2026-05-25,66,https://a.feizhu.com/4QQJJz,pending,候选,前台地址与住宿地址可能不同；下单前确认

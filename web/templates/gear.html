@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% set active = "gear" %}
+{% block title %}云南行 - 装备{% endblock %}
+{% block body %}
+<div class="p-4 space-y-4">
+<h1 class="text-lg font-bold">装备清单</h1>
+
+{% set categories = [] %}
+{% for row in rows %}
+{% if row.category not in categories %}
+{% if categories.append(row.category) %}{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for cat in categories %}
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<h2 class="font-semibold text-sm mb-2">{{ cat }}</h2>
+{% for row in rows %}
+{% if row.category == cat %}
+<div class="flex justify-between items-center py-1 border-b border-gray-50 text-xs">
+<div class="flex items-center gap-2">
+<span class="{% if row.owned == 'true' %}text-green-500{% else %}text-gray-300{% endif %}">●</span>
+<span>{{ row.item }}</span>
+{% if row.must_have == 'true' %}<span class="text-red-400 text-[10px]">必</span>{% endif %}
+</div>
+<div class="text-gray-500 text-right">
+{% if row.estimated_cost and row.estimated_cost != '0' %}¥{{row.estimated_cost}}{% endif %}
+{% if row.weight_g %} · {{row.weight_g}}g{% endif %}
+</div>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+{% endfor %}
+
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<div id="gear-chart" class="w-full h-48"></div>
+</div>
+</div>
+
+<script>
+var gearData = {};
+{% for row in rows %}
+{% if row.estimated_cost and row.estimated_cost != '0' %}
+gearData['{{row.category}}'] = (gearData['{{row.category}}']||0) + {{row.estimated_cost}};
+{% endif %}
+{% endfor %}
+var chart = echarts.init(document.getElementById('gear-chart'));
+chart.setOption({
+  series:[{type:'pie',radius:['35%','65%'],
+    data:Object.entries(gearData).map(([k,v])=>({name:k,value:v})),
+    label:{fontSize:10}
+  }]
+});
+</script>
+{% endblock %}

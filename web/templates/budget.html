@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% set active = "budget" %}
+{% block title %}云南行 - 预算{% endblock %}
+{% block body %}
+<div class="p-4 space-y-4">
+<h1 class="text-lg font-bold">预算</h1>
+
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<div id="budget-chart" class="w-full h-56"></div>
+</div>
+
+<div class="bg-white rounded-lg p-3 shadow-sm">
+<table class="w-full text-xs">
+<tr class="border-b font-semibold"><td class="py-1">类别</td><td>项目</td><td class="text-right">计划</td><td class="text-right">实际</td></tr>
+{% for row in budget_rows %}
+<tr class="border-b border-gray-100">
+<td class="py-1">{{row.get('category','')}}</td>
+<td>{{row.get('item','')}}</td>
+<td class="text-right">{{row.get('planned','')}}</td>
+<td class="text-right">{{row.get('actual','')}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+</div>
+
+<script>
+var data = [
+{% for row in budget_rows %}
+{% if row.category and row.category != '总计' %}
+{name:'{{row.category}}',planned:{{row.planned or 0}},actual:{{row.actual or 0}}},
+{% endif %}
+{% endfor %}
+];
+var chart = echarts.init(document.getElementById('budget-chart'));
+chart.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{top:0,textStyle:{fontSize:10}},
+  grid:{top:30,bottom:30,left:40,right:10},
+  xAxis:{type:'category',data:data.map(d=>d.name),axisLabel:{fontSize:9,rotate:20}},
+  yAxis:{type:'value',axisLabel:{fontSize:9}},
+  series:[
+    {name:'计划',type:'bar',data:data.map(d=>d.planned),color:'#3b82f6'},
+    {name:'实际',type:'bar',data:data.map(d=>d.actual),color:'#ef4444'}
+  ]
+});
+</script>
+{% endblock %}
