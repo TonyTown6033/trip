@@ -111,7 +111,6 @@ async def budget(request: Request):
         "budget_rows": budget_rows,
     })
 
-
 @app.get("/gear", response_class=HTMLResponse)
 async def gear(request: Request):
     rows = read_csv_rows(PROJECT / "01-gear" / "packing-list.csv")

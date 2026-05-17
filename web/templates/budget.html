@@ -11,13 +11,14 @@
 
 <div class="bg-white rounded-lg p-3 shadow-sm">
 <table class="w-full text-xs">
-<tr class="border-b font-semibold"><td class="py-1">类别</td><td>项目</td><td class="text-right">计划</td><td class="text-right">实际</td></tr>
+<tr class="border-b font-semibold"><td class="py-1">类别</td><td>项目</td><td class="text-right">计划</td><td class="text-right">实际</td><td class="text-right">剩余</td></tr>
 {% for row in budget_rows %}
 <tr class="border-b border-gray-100">
 <td class="py-1">{{row.get('category','')}}</td>
 <td>{{row.get('item','')}}</td>
 <td class="text-right">{{row.get('planned','')}}</td>
 <td class="text-right">{{row.get('actual','')}}</td>
+<td class="text-right">{{row.get('balance_after','')}}</td>
 </tr>
 {% endfor %}
 </table>

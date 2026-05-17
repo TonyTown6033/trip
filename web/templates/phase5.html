@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% set active = "phase5" %}
+{% block title %}云南行 - 阶段5{% endblock %}
+{% block body %}
+<div class="p-4 space-y-4">
+<h1 class="text-lg font-bold">阶段5</h1>
+
+<div class="bg-white rounded-lg p-3 shadow-sm prose prose-sm max-w-none">
+{{ report | safe }}
+</div>
+</div>
+{% endblock %}

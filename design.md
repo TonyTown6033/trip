@@ -3,6 +3,7 @@
 ## 目标
 
 分阶段完成 10 个城市的信息搜集、分析和计划生成，使出发前（2026-05-20）尽可能多的城市有可执行的计划。
+每个阶段都可以使用subagent, 首先阅读 AGENTS.md 和 agent.md
 
 ## 阶段划分
 
@@ -36,7 +37,7 @@
 
 | 信息类型 | 工具 | 输出位置 |
 |----------|------|----------|
-| 住宿（青旅/客栈） | FlyAI CLI | `03-stages/<stage>/stay.md` |
+| 住宿（青旅 + 酒店/客栈） | FlyAI CLI | `03-stages/<stage>/stay.md` |
 | 景点/POI | 高德地图 API | `07-attractions/<city>.csv` → 精选入 `03-stages/<stage>/plan.md` |
 | 美食/餐饮 | 高德 POI + 人工补充 | `food/food.csv` → 精选入 `03-stages/<stage>/food.md` |
 | 城际交通 | 12306 MCP + 高德路线 | `03-stages/<stage>/transport.md` |
@@ -57,8 +58,9 @@
 
 **每站标准流程**：
 ```
-FlyAI search-hotel --dest-name <城市> --check-in-date <日期> --max-price 80 --sort price_asc
-→ 筛选 top 5 写入 stay.md
+FlyAI search-hotel --dest-name <城市> --check-in-date <日期> --max-price 80 --sort price_asc --key-words "青旅"
+FlyAI search-hotel --dest-name <城市> --check-in-date <日期> --max-price 120 --sort price_asc --key-words "酒店"
+→ 合并筛选 top 5-7 写入 stay.md
 
 高德 POI 搜索：景点/美食/交通枢纽
 → 写入 plan.md / food.md
