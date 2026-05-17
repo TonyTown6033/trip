@@ -9,7 +9,7 @@ category,item,owned,must_have,estimated_cost,actual_cost,weight_g,notes
 雨具,轻量雨衣/冲锋衣,true,true,0,,,之前买的雨季核心装备
 雨具,折叠伞,false,false,40,,,城市使用
 鞋,防滑徒步鞋/越野跑鞋,false,true,300,,,优先已磨合，不穿新鞋长走
-鞋,拖鞋/凉鞋,false,true,true,,,青旅和雨天备用
+鞋,拖鞋/凉鞋,true,true,0,,,青旅和雨天备用
 衣物,速干T恤2-3件,true,true,0,,,
 衣物,速干长袖/防晒长袖,true,true,0,,,徒步防晒和温差应对
 衣物,速干长裤1-2条,true,true,0,,,
