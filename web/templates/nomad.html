@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% set active = "nomad" %}
+{% block title %}云南行 - 落脚攻略{% endblock %}
+{% block head %}
+<style>
+.place-strip{scroll-snap-type:x mandatory}
+.place-strip>div{scroll-snap-align:start}
+.nomad-prose h1{font-size:1.1rem;margin-top:0}
+.nomad-prose h2{font-size:1rem;margin-top:1.25rem}
+.nomad-prose h3{font-size:.92rem}
+.nomad-prose ul{padding-left:1.1rem}
+</style>
+{% endblock %}
+{% block body %}
+<div class="pb-5">
+<section class="bg-slate-950 text-white px-4 pt-5 pb-6">
+<p class="text-xs text-blue-200">数字游民落脚优先级</p>
+<h1 class="mt-2 text-2xl font-bold leading-tight">先探圈子，再找便宜长租</h1>
+<p class="mt-3 text-sm leading-6 text-slate-300">第一站放在大理古城南门 / 大理大学附近，用 48 小时确认办公点、社群和同行密度，再转三文笔村、银桥、双阳村压低长期成本。</p>
+<div class="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+<a href="#first-stop" class="rounded bg-white/10 px-2 py-2">第一站</a>
+<a href="#actions" class="rounded bg-white/10 px-2 py-2">48 小时</a>
+<a href="#money" class="rounded bg-white/10 px-2 py-2">现金流</a>
+</div>
+</section>
+
+<main class="p-4 space-y-5">
+<section id="first-stop" class="space-y-3">
+<div>
+<p class="text-xs text-blue-600 font-medium">最浓区域</p>
+<h2 class="text-lg font-semibold">大理古城南门 / 大理大学附近</h2>
+<p class="mt-1 text-sm text-gray-600 leading-6">本地样本直接命中 `Remote`、`AI`、`Web3`、`程序员`、`自由职业`、`远程工作`。这里适合先找人和信息，不适合一开始就长住高消费民宿。</p>
+</div>
+<div class="place-strip flex gap-3 overflow-x-auto pb-1">
+<div class="min-w-[78%] rounded-lg bg-white p-3 shadow-sm border border-blue-100">
+<p class="text-xs text-blue-600">第 1 优先</p>
+<h3 class="mt-1 font-semibold">古城南门 / 大理大学</h3>
+<p class="mt-1 text-xs leading-5 text-gray-600">住 2-3 晚，扫咖啡馆、书咖、社群二维码、Remote 办公人群。</p>
+</div>
+<div class="min-w-[78%] rounded-lg bg-white p-3 shadow-sm">
+<p class="text-xs text-gray-500">第 2 优先</p>
+<h3 class="mt-1 font-semibold">三文笔村</h3>
+<p class="mt-1 text-xs leading-5 text-gray-600">适合从社群探索切到稳定居住，有开发者和项目开发线索。</p>
+</div>
+<div class="min-w-[78%] rounded-lg bg-white p-3 shadow-sm">
+<p class="text-xs text-gray-500">第 3 优先</p>
+<h3 class="mt-1 font-semibold">银桥 / 双阳 / 下阳波</h3>
+<p class="mt-1 text-xs leading-5 text-gray-600">更适合压房租、睡好觉、恢复作息，社群密度低一些。</p>
+</div>
+</div>
+</section>
+
+<section id="actions" class="bg-white rounded-lg p-4 shadow-sm">
+<h2 class="text-lg font-semibold">到场 48 小时攻略</h2>
+<div class="mt-3 space-y-3 text-sm text-gray-700">
+<div class="flex gap-3">
+<span class="text-blue-600 font-semibold">1</span>
+<p>先订古城南门附近 `2-3` 晚，预算 `80-150/晚`，只作为看房和扫圈子的缓冲。</p>
+</div>
+<div class="flex gap-3">
+<span class="text-blue-600 font-semibold">2</span>
+<p>下午去 `婷院书咖`、`临在咖啡`、`19°空间`、古城书咖、大理大学附近咖啡馆，观察抱电脑办公的人、插座、网速、活动海报。</p>
+</div>
+<div class="flex gap-3">
+<span class="text-blue-600 font-semibold">3</span>
+<p>晚上搜 `大理 数字游民 群`、`大理 Remote 办公`、`大理 程序员 群`、`大理 AI 交流`、`大理 Web3 交流`。</p>
+</div>
+<div class="flex gap-3">
+<span class="text-blue-600 font-semibold">4</span>
+<p>第二天去三文笔村看房，第三天再看银桥、双阳村、下阳波、凤阳邑的低价月租。</p>
+</div>
+</div>
+</section>
+
+<section class="bg-white rounded-lg p-4 shadow-sm">
+<h2 class="text-lg font-semibold">看房硬标准</h2>
+<div class="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-700">
+<div class="rounded bg-gray-50 p-2">房租 `500-1000/月`</div>
+<div class="rounded bg-gray-50 p-2">上限 `1200/月`</div>
+<div class="rounded bg-gray-50 p-2">有窗、晚上不吵</div>
+<div class="rounded bg-gray-50 p-2">现场测速</div>
+<div class="rounded bg-gray-50 p-2">可洗衣</div>
+<div class="rounded bg-gray-50 p-2">可做饭或吃饭便宜</div>
+</div>
+</section>
+
+<section id="money" class="bg-white rounded-lg p-4 shadow-sm">
+<h2 class="text-lg font-semibold">现金流方向</h2>
+<p class="mt-2 text-sm text-gray-600 leading-6">不要优先做义工、试睡、旅行内容号。先用技术小单恢复成交和交付。</p>
+<div class="mt-3 flex flex-wrap gap-2 text-xs">
+{% for item in ["Docker 部署","VPS 搭建","Linux 运维","网站上线","AI 工具部署","自动化脚本","Go 小接口","Dify / n8n 部署"] %}
+<span class="rounded bg-blue-50 px-2 py-1 text-blue-700">{{ item }}</span>
+{% endfor %}
+</div>
+<div class="mt-4 rounded bg-slate-950 p-3 text-xs leading-5 text-slate-100">
+我可以做 Docker 部署、VPS 环境搭建、网站上线、AI 工具部署、自动化脚本。简单任务 200 起，明确需求后 24 小时内交付。
+</div>
+</section>
+
+<section class="bg-white rounded-lg p-4 shadow-sm nomad-prose prose prose-sm max-w-none">
+{{ report | safe }}
+</section>
+</main>
+</div>
+{% endblock %}

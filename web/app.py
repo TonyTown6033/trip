@@ -49,7 +49,7 @@ STAGE_COORDS = [
 
 def read_md(path: Path) -> str:
     if path.exists():
-        return markdown.markdown(path.read_text(encoding="utf-8"), extensions=["tables"])
+        return markdown.markdown(path.read_text(encoding="utf-8"), extensions=["tables", "fenced_code"])
     return "<p>暂无内容</p>"
 
 
@@ -127,4 +127,20 @@ async def food(request: Request):
     return templates.TemplateResponse(request, "food.html", {
         "intro": intro_html,
         "rows": rows,
+    })
+
+
+@app.get("/nomad", response_class=HTMLResponse)
+async def nomad(request: Request):
+    report_html = read_md(PROJECT / "05-research" / "yunnan-digital-nomad-plan.md")
+    return templates.TemplateResponse(request, "nomad.html", {
+        "report": report_html,
+    })
+
+
+@app.get("/phase5", response_class=HTMLResponse)
+async def phase5(request: Request):
+    report_html = read_md(PROJECT / "06-exports" / "phase5-execution-report.md")
+    return templates.TemplateResponse(request, "phase5.html", {
+        "report": report_html,
     })
